@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{EB5B7ACC-BA7A-42EE-A155-E78164D9A20E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="PrimeFactorsDUnitTest.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PrimeFactorsDUnitXTest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PrimeFactorsDUnitTest">
+        <MSBuild Projects="PrimeFactorsDUnitTest.dproj"/>
+    </Target>
+    <Target Name="PrimeFactorsDUnitTest:Clean">
+        <MSBuild Projects="PrimeFactorsDUnitTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PrimeFactorsDUnitTest:Make">
+        <MSBuild Projects="PrimeFactorsDUnitTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PrimeFactorsDUnitXTest">
+        <MSBuild Projects="PrimeFactorsDUnitXTest.dproj"/>
+    </Target>
+    <Target Name="PrimeFactorsDUnitXTest:Clean">
+        <MSBuild Projects="PrimeFactorsDUnitXTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PrimeFactorsDUnitXTest:Make">
+        <MSBuild Projects="PrimeFactorsDUnitXTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PrimeFactorsDUnitTest;PrimeFactorsDUnitXTest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PrimeFactorsDUnitTest:Clean;PrimeFactorsDUnitXTest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PrimeFactorsDUnitTest:Make;PrimeFactorsDUnitXTest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
